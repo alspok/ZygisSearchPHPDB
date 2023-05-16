@@ -1,0 +1,14 @@
+{
+    "server": {
+        "host": "92.61.37.91",
+        "port": 21,
+        "user": "zedealsl13316lt",
+        "password": " KlU9nBpt*avtr^06"
+    },
+    "files": [
+        {
+            "localfile": "/xampp/htdocs/ZygisSearchPHPDB",
+            "remotefile": "/httpdocs/ZygisSearchPHPDB"
+        }
+    ]
+}
