@@ -15,7 +15,7 @@ print("<h3>Welcome to Zygis DB search</h3>");
 $username = 'doadmin';
 $password = 'AVNS_8KPSkB3aCglqOlUajdh';
 $host = 'db-mysql-fra1-44995-do-user-14106707-0.b.db.ondigitalocean.com';
-$port = 25060;
+$port = '25060';
 $database = 'defaultdb';
 $sslmode = 'REQUIRED';
 
