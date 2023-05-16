@@ -1,6 +1,3 @@
-Datailes/*
-!DataFiles/.gitkeep
-!DataFiles/FRAGNANCES.csv.mod.csv
 **/__pycache__/
 .venv/Lib/site-packages/distutils-precedence.pth
 .venv/Lib/site-packages/_distutils_hack/__init__.py
