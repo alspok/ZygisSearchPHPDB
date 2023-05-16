@@ -1,0 +1,9 @@
+digitalocean mysql:
+unique database cluster name db-mysql-fra1-44995
+
+username = doadmin
+password = AVNS_8KPSkB3aCglqOlUajdh
+host = db-mysql-fra1-44995-do-user-14106707-0.b.db.ondigitalocean.com
+port = 25060
+database = defaultdb
+sslmode = REQUIRED
