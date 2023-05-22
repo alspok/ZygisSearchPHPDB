@@ -12,15 +12,15 @@ print("<h3>Welcome to Zygis DB search</h3>");
 // $db_name = 'e-deals-db';
 // $tbl_name = 'e_deals_tbl'; // 
 
-$username = 'doadmin';
-$password = 'AVNS_8KPSkB3aCglqOlUajdh';
-$host = 'db-mysql-fra1-44995-do-user-14106707-0.b.db.ondigitalocean.com';
-$port = '25060';
-$database = 'defaultdb';
-$sslmode = 'REQUIRED';
+$user_name = 'root';
+$password = 'alvsH12mps';
+$host = '64.226.125.17';
+$port = 25060;
+$db_name = 'e_deals_db';
+$tbl_name = 'e_deals_tbl';
 
 $connection = new ConnectDB();
-$conn = $connection->connectDB($host, $user_name, $password, $db_name);
+$conn = $connection->connectDB($host, $port, $use_rname, $password, $db_name);
 
 $connection->createTBL($conn, $tbl_name);
 

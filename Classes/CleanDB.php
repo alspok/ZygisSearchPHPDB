@@ -13,7 +13,7 @@ class CleanDB{
         // foreach($column_data as $data){
         //     print($data . "<br>");
         // }
-
+       
         print("Array size before push: " . count($column_data) . "<br>");
         $unique_values = [];
         $repeat_values = [];

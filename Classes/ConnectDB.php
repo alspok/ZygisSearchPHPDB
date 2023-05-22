@@ -1,7 +1,7 @@
 <?php
 class ConnectDB{
-    public function connectDB(string $host, string $user_name, string $password, string $db_name): object{
-        $connection = mysqli_connect($host, $user_name, $password, $db_name);
+    public function connectDB(string $host, int $port, string $user_name, string $password, string $db_name): object{
+        $connection = mysqli_connect($host, $port, $user_name, $password, $db_name);
         if($connection === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
         }
