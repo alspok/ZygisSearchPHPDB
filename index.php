@@ -14,7 +14,7 @@ print("<h3>Welcome to Zygis DB search</h3>");
 
 $user_name = 'root';
 $password = 'alvsH12mps';
-$host = '64.226.125.17';
+$host = 'ubuntu-s-1vcpu-1gb-fra1-01';
 $port = 25060;
 $db_name = 'e_deals_db';
 $tbl_name = 'e_deals_tbl';
