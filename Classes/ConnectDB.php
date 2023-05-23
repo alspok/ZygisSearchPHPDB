@@ -18,22 +18,24 @@ class ConnectDB{
             die("Unable to drop table $tbl_name <br>" . mysqli_error($connection));
         }
 
-        $query = "CREATE TABLE $tbl_name (
-            -- id int IDENTITY(1,1) PRIMARY KEY,
+        $query = "CREATE TABLE e_deals_tbl (
+            id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             company varchar(30) NOT NULL,
             ean varchar(20) NOT NULL,
-            -- unique_repeat varchar(20),
+            unique_repeat varchar(20),
             item_sku varchar(20) NOT NULL,
             product_name varchar(255) NOT NULL,
             brand_name varchar(20) NOT NULL,
             required_price_to_amazon varchar(20) NOT NULL)";
+
+        var_dump($query);
 
         $result = mysqli_query($connection, $query);
         if(!$result){
             die("Unable to create $tbl_name <br>" . mysqli_error($connection));
         }
         else{
-            echo("Table <b>" . $tbl_name . "</b> created<br>");
+            echo("<br>Table <b>" . $tbl_name . "</b> created<br>");
         }
     }
 }
