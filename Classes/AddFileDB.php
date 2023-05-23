@@ -19,7 +19,9 @@ class AddFileDB{
                 for($i = 0; $i < count($array); $i++){
                     $array[$i] = str_replace(['"', "'"], '', $array[$i]);
                 }
-                $query = "INSERT INTO $table_name VALUES ('', '$company', '$array[0]', '', '$array[1]', '$array[2]', '$array[3]', '$array[4]')";
+                $query = "INSERT INTO " . $table_name . " ('company', 'ean', 'item_sku', 'product_name', 'brand_name', 'required_price_to_amazon')
+                          VALUES ($company, $array[0], $array[1], $array[2], $array[3], $array[4]')";
+                var_dump($query);
                 $result = mysqli_query($conn, $query);
                 if(!$result){
                     die("Table access failed: " . mysqli_error($conn));
