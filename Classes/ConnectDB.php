@@ -1,42 +1,50 @@
 <?php
 class ConnectDB{
     public function connectDB(string $host, string $username, string $password, string $database, int $port, string $sslmode): object{
-        $connection = new mysqli($host, $username, $password, $database, $port, $sslmode);
+        $conn = new mysqli($host, $username, $password, $database, $port, $sslmode);
+        var_dump($conn);
         // $connection = mysqli_connect($host, $port, $user_name, $password, $db_name);
-        if($connection === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
+        if(!$conn->connect_error){
+            die("ERROR: Could not connect. " . $conn->connect_error);
         }
         echo "Connected to database <b>" . $database . "</b> successfully<br>";
 
-        return $connection;
+        return $conn;
     }
-    public function createTBL(object $connection, string $database, string $tbl_name): void{
-        mysqli_select_db($connection, $database );
-        $query = "DROP TABLE IF EXISTS $tbl_name";
-        $result = mysqli_query($connection, $query);
-        if(!$result){
-            die("Unable to drop table $tbl_name <br>" . mysqli_error($connection));
+    public function createTBL(object $conn, string $database, string $tablename): void{
+        mysqli_select_db($conn, $database );
+
+        $query = "CREATE TABLE IF NOT EXISTS $tablename (
+            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            company char(30),
+            ean char(30),
+            unique_item char(30),
+            item_sku char(30),
+            product_name char(60),
+            brand_name char(30),
+            required_price_to_amazon char(30)
+            );";
+
+        if(!$conn->query($query)){
+            die("Error creating table: " . $conn->connect_error);
         }
+        else {
+            echo "Table <b>" . $tablename . "</b> ok<br>";
+        }
+    }
 
-        $query = "CREATE TABLE e_deals_tbl (
-            id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            company varchar(30) NOT NULL,
-            ean varchar(20) NOT NULL,
-            unique_repeat varchar(20),
-            item_sku varchar(20) NOT NULL,
-            product_name varchar(255) NOT NULL,
-            brand_name varchar(20) NOT NULL,
-            required_price_to_amazon varchar(20) NOT NULL)";
-
+    public function selectTBL(object $conn, string $tablename): void{
+        $query = "SELECT * FROM $tablename LIMIT 20;";
         var_dump($query);
-
-        $result = mysqli_query($connection, $query);
-        if(!$result){
-            die("Unable to create $tbl_name <br>" . mysqli_error($connection));
-        }
-        else{
-            echo("<br>Table <b>" . $tbl_name . "</b> created<br>");
-        }
+        $result = $conn->query($query);
+        if($result)
+        while($row = $result->fetch_assoc()){
+            $row_array[] = $row;
+            echo $row['company'] . ' ' . $row['ean'] . ' ' . $row['unique_item'] . ' ' . 
+                 $row['item_sku'] . ' ' . $row['product_name'] . ' ' . $row['brand_name'] . ' ' .
+                 $row['required_price_to_amazon'] . '<br>';
+                }
+        $conn->free_result($result);
     }
 }
 ?>
